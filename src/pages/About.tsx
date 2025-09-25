@@ -20,18 +20,37 @@ const About = () => {
     <div className="min-h-screen relative overflow-hidden">
       <WebGLBackground />
       
-      {/* Video Background */}
+      {/* Developer Coding Video Background */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-25"
+          style={{ filter: 'blur(1px)' }}
         >
-          <source src="https://videos.pexels.com/video-files/4576668/4576668-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+          {/* Multiple video sources for better compatibility */}
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4" />
+          {/* Fallback content when video doesn't load */}
+          <div className="w-full h-full bg-gradient-to-br from-background via-card to-background"></div>
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/75 to-background/85" />
+        
+        {/* Animated code overlay for coding atmosphere */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 text-primary text-xs font-mono animate-pulse">
+            const developer = &#123;<br/>
+            &nbsp;&nbsp;name: 'Oleg Zeng',<br/>
+            &nbsp;&nbsp;skills: ['AI', 'WebGL', 'Blockchain']<br/>
+            &#125;;
+          </div>
+          <div className="absolute bottom-1/3 right-1/4 text-primary-glow text-xs font-mono animate-pulse" style={{ animationDelay: '1s' }}>
+            npm run build<br/>
+            ✓ Compiled successfully
+          </div>
+        </div>
       </div>
 
       <div className="relative z-10 pt-32 pb-20 px-6">
